@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const downloadBtn = document.getElementById("downloadCV");
   if (downloadBtn) {
     downloadBtn.addEventListener("click", function () {
-      const cvPath = "img/cv saya.pdf";
+      const cvPath = "img/MY CV.pdf";
       const tempLink = document.createElement("a");
       tempLink.href = cvPath;
       tempLink.setAttribute("download", "my CV.pdf");
