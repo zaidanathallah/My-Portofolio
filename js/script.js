@@ -50,17 +50,13 @@ window.onload = typeWriter;
 
 // Add CV download functionality
 document.addEventListener("DOMContentLoaded", function () {
-  const downloadBtn = document.querySelector(".btn a");
+  const downloadBtn = document.getElementById("downloadCV");
   if (downloadBtn) {
-    downloadBtn.addEventListener("click", function (e) {
+    downloadBtn.addEventListener("click", function () {
       const cvPath = "img/cv saya.pdf";
-
-      // Create a temporary link
       const tempLink = document.createElement("a");
       tempLink.href = cvPath;
       tempLink.setAttribute("download", "my CV.pdf");
-
-      // Append to body, click, and remove
       document.body.appendChild(tempLink);
       tempLink.click();
       document.body.removeChild(tempLink);
