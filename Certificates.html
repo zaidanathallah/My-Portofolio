@@ -1,0 +1,650 @@
+<!-- Subscribe Tamzidan Madiyin di YouTube -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
+
+      * {
+        padding: 0;
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        box-sizing: border-box;
+      }
+
+      body {
+        width: 100%;
+        height: 100vh;
+        background-image: url("./img/10.png");
+        background-size: cover;
+        overflow: auto;
+        position: relative;
+      }
+
+      nav {
+        width: 100%;
+        height: 10vh;
+        position: relative;
+        z-index: 1000;
+      }
+
+      .nav-container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+
+      .logo {
+        color: white;
+        font-size: 2rem;
+        font-weight: bold;
+      }
+
+      .logo span {
+        color: rgb(58, 211, 3);
+        text-shadow: 0 0 10px rgb(58, 211, 3);
+      }
+
+      .hamburg,
+      .cancel {
+        cursor: pointer;
+        position: absolute;
+        right: 15px;
+        top: 10px;
+        color: white;
+        display: none;
+        font-size: clamp(2.5rem, 0.5rem + 5vw, 3rem);
+      }
+
+      .nav-container .links {
+        display: flex;
+      }
+
+      .nav-container .links a {
+        font-size: 1.2rem;
+        color: white;
+        margin: 0 20px;
+        text-decoration: none;
+        font-weight: 550;
+        transition: 0.3s linear;
+      }
+
+      .nav-container .links a:hover {
+        color: rgb(58, 211, 3);
+        border-bottom: 2px solid rgb(58, 211, 3);
+      }
+
+      .nav-container .links .active {
+        color: rgb(58, 211, 3);
+        border-bottom: 2px solid rgb(58, 211, 3);
+      }
+
+      .dropdown {
+        z-index: 1000;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        transform: translateY(-500px);
+        width: 100%;
+        height: auto;
+        transition: 0.2s linear;
+      }
+
+      .dropdown .links a {
+        display: flex;
+        color: white;
+        text-decoration: none;
+        padding: 15px 0;
+        justify-content: center;
+        align-items: center;
+        transition: 0.2s linear;
+      }
+
+      .dropdown .links a:hover {
+        background-color: rgb(58, 211, 3);
+      }
+
+      /* Service Section Styles */
+      .services-container {
+        width: 100%;
+        min-height: 90vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+      }
+
+      .services-content {
+        width: 80%;
+        max-width: 1200px;
+        border-radius: 20px;
+        padding: 3rem;
+        color: white;
+      }
+
+      .services-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .services-header h1 {
+        font-size: 2.5rem;
+        color: rgb(58, 211, 3);
+        text-shadow: 0 0 10px rgb(58, 211, 3);
+        margin-bottom: 1rem;
+      }
+
+      .certificates-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+
+      .certificate-card {
+        background: rgba(58, 211, 3, 0.1);
+        border-radius: 15px;
+        padding: 1rem;
+        text-align: center;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        cursor: zoom-in;
+      }
+
+      .certificate-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 0 20px rgba(58, 211, 3, 0.5);
+      }
+
+      .certificate-image {
+        width: 100%;
+        height: 200px;
+        margin-bottom: 1rem;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .certificate-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .certificate-title {
+        font-size: 1.2rem;
+        color: rgb(58, 211, 3);
+        margin-bottom: 0.5rem;
+      }
+
+      @media (max-height: 800px) {
+        body {
+          height: auto;
+          min-height: 100vh;
+        }
+
+        .services-container {
+          height: auto;
+          min-height: 90vh;
+        }
+      }
+
+      @media (max-width: 884px) {
+        .certificates-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        nav .logo {
+          position: absolute;
+          top: 16px;
+          left: 15px;
+          font-size: 1.5rem;
+        }
+
+        .nav-container .links {
+          display: none;
+        }
+
+        .hamburg,
+        .cancel {
+          display: block;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .services-container {
+          padding: 1rem;
+        }
+
+        .services-content {
+          width: 95%;
+          padding: 1.5rem;
+        }
+
+        .certificates-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .services-header h1 {
+          font-size: 2rem;
+        }
+
+        .certificate-card {
+          padding: 1.5rem;
+        }
+      }
+
+      /* Modal styles */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+
+      .modal.active {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .modal-content {
+        max-width: 90%;
+        max-height: 90vh;
+        margin: auto;
+        display: block;
+        position: relative;
+      }
+
+      .modal-content img {
+        max-width: 100%;
+        max-height: 90vh;
+        object-fit: contain;
+      }
+
+      .close-modal {
+        position: absolute;
+        top: -40px;
+        right: 0;
+        color: rgb(58, 211, 3);
+        font-size: 30px;
+        cursor: pointer;
+        transition: 0.3s ease;
+      }
+
+      .close-modal:hover {
+        color: white;
+        transform: scale(1.1);
+      }
+    </style>
+    <title>Certificates - Portfolio Website</title>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-container">
+        <div class="logo" data-aos="zoom-in" data-aos-duration="1500">
+          call me <span>zai.</span>
+        </div>
+        <div class="links">
+          <div
+            class="link"
+            data-aos="fade-up"
+            data-aos-duration="1500"
+            data-aos-delay="100"
+          >
+            <a href="index.html">Home</a>
+          </div>
+          <div
+            class="link"
+            data-aos="fade-up"
+            data-aos-duration="1500"
+            data-aos-delay="200"
+          >
+            <a href="about.html">About</a>
+          </div>
+          <div
+            class="link"
+            data-aos="fade-up"
+            data-aos-duration="1500"
+            data-aos-delay="300"
+          >
+            <a href="skill.html">Skills</a>
+          </div>
+          <div
+            class="link active"
+            data-aos="fade-up"
+            data-aos-duration="1500"
+            data-aos-delay="400"
+          >
+            <a href="service.html">Certificates</a>
+          </div>
+          <div
+            class="link"
+            data-aos="fade-up"
+            data-aos-duration="1500"
+            data-aos-delay="500"
+          >
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+      </div>
+      <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
+      <div class="dropdown">
+        <div class="links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="skill.html">Skills</a>
+          <a href="Certificates.html">Certificates</a>
+          <a href="contact.html">Contact</a>
+          <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
+        </div>
+      </div>
+    </nav>
+
+    <div class="services-container">
+      <div class="services-content">
+        <div
+          class="services-header"
+          data-aos="fade-down"
+          data-aos-duration="1500"
+        >
+          <h1>My Certificates</h1>
+        </div>
+        <div class="certificates-grid">
+          <!-- HTML & CSS Certificate -->
+          <div
+            class="certificate-card"
+            data-aos="fade-up"
+            data-aos-duration="1500"
+            data-aos-delay="100"
+            onclick="openModal('img/sertifikat-html-css.png', 'HTML CSS JS Certificate')"
+          >
+            <div class="certificate-image">
+              <img
+                src="img/sertifikat-html-css.png"
+                alt="HTML CSS JS Certificate"
+              />
+            </div>
+            <h3 class="certificate-title">HTML CSS JS Certificate</h3>
+          </div>
+
+          <!-- Data Science Certificate -->
+          <div
+            class="certificate-card"
+            data-aos="fade-up"
+            data-aos-duration="1500"
+            data-aos-delay="300"
+            onclick="openModal('img/sertifikat-data-science.png', 'Data Science Certificate')"
+          >
+            <div class="certificate-image">
+              <img
+                src="img/sertifikat-data-science.png"
+                alt="Data Science Certificate"
+              />
+            </div>
+            <h3 class="certificate-title">Data Science Certificate</h3>
+          </div>
+
+          <!-- Codepolitan Certificate -->
+          <div
+            class="certificate-card"
+            data-aos="fade-up"
+            data-aos-duration="1500"
+            data-aos-delay="500"
+            onclick="openModal('img/Certificate Detail - CODEPOLITAN.png', 'Fullstack Web Developer Certificate')"
+          >
+            <div class="certificate-image">
+              <img
+                src="img/Certificate Detail - CODEPOLITAN.png"
+                alt="Fullstack Web Developer Certificate"
+              />
+            </div>
+            <h3 class="certificate-title">
+              Fullstack Web Developer Certificate
+            </h3>
+          </div>
+
+          <!-- Cloud Essentials Knowledge Badge Assesment.jpg -->
+          <div
+            class="certificate-card"
+            data-aos="fade-up"
+            data-aos-duration="1500"
+            data-aos-delay="700"
+            onclick="openModal('img/CLoud Essentials Knowledge Badge Assesment.jpg', 'Cloud Essentials Knowledge Badge Assesment Certificate')"
+          >
+            <div class="certificate-image">
+              <img
+                src="img/CLoud Essentials Knowledge Badge Assesment.jpg"
+                alt="Cloud Essentials Knowledge Badge Assesment Certificate"
+              />
+            </div>
+            <h3 class="certificate-title">
+              Cloud Essentials Knowledge Badge Assesment Certificate
+            </h3>
+          </div>
+
+          <!-- LKTI.jpg -->
+          <div
+            class="certificate-card"
+            data-aos="fade-up"
+            data-aos-duration="1500"
+            data-aos-delay="900"
+            onclick="openModal('img/Karya Tulis Ilmiah TIK.jpg', 'Karya Tulis Ilmiah TIK Certificate')"
+          >
+            <div class="certificate-image">
+              <img
+                src="img/Karya Tulis Ilmiah TIK.jpg"
+                alt="Karya Tulis Ilmiah TIK Certificate"
+              />
+            </div>
+            <h3 class="certificate-title">
+              Karya Tulis Ilmiah TIK Certificate
+            </h3>
+          </div>
+
+          <!-- LKTI.jpg -->
+          <div
+            class="certificate-card"
+            data-aos="fade-up"
+            data-aos-duration="1500"
+            data-aos-delay="1100"
+            onclick="openModal('img/Sertifikat Magang.png', 'Magang Certificate')"
+          >
+            <div class="certificate-image">
+              <img src="img/Sertifikat Magang.png" alt="Magang Certificate" />
+            </div>
+            <h3 class="certificate-title">Magang Certificate</h3>
+          </div>
+
+          <!-- LKTI.jpg -->
+          <div
+            class="certificate-card"
+            data-aos="fade-up"
+            data-aos-duration="1500"
+            data-aos-delay="1300"
+            onclick="openModal('img/Lencana Pencapaian 200 Desain Canva.png', 'Desain Canva Certificate')"
+          >
+            <div class="certificate-image">
+              <img
+                src="img/Lencana Pencapaian 200 Desain Canva.png"
+                alt="Desain Canva Certificate"
+              />
+            </div>
+            <h3 class="certificate-title">Desain Canva Certificate</h3>
+          </div>
+
+          <!-- LKTI.jpg -->
+          <div
+            class="certificate-card"
+            data-aos="fade-up"
+            data-aos-duration="1500"
+            data-aos-delay="1500"
+            onclick="openModal('img/sertifikat-microsoft-word-lanjutan.png', 'Microsoft Word Certificate')"
+          >
+            <div class="certificate-image">
+              <img
+                src="img/sertifikat-microsoft-word-lanjutan.png"
+                alt="Microsoft Word Certificate"
+              />
+            </div>
+            <h3 class="certificate-title">Microsoft Word Certificate</h3>
+          </div>
+
+          <!-- LKTI.jpg -->
+          <div
+            class="certificate-card"
+            data-aos="fade-up"
+            data-aos-duration="1500"
+            data-aos-delay="1700"
+            onclick="openModal('img/sertifikat-ui-ux-fundamentals.png', 'UI UX Fundamentals Certificate')"
+          >
+            <div class="certificate-image">
+              <img
+                src="img/sertifikat-ui-ux-fundamentals.png"
+                alt="UI UX Fundamentals Certificate"
+              />
+            </div>
+            <h3 class="certificate-title">UI UX Fundamentals Certificate</h3>
+          </div>
+
+          <!-- LKTI.jpg -->
+          <div
+            class="certificate-card"
+            data-aos="fade-up"
+            data-aos-duration="1500"
+            data-aos-delay="1900"
+            onclick="openModal('img/sertifikat-microsoft-excel.png', 'Microsoft Excel Certificate')"
+          >
+            <div class="certificate-image">
+              <img
+                src="img/sertifikat-microsoft-excel.png"
+                alt="Microsoft Excel Certificate"
+              />
+            </div>
+            <h3 class="certificate-title">Microsoft Excel Certificate</h3>
+          </div>
+
+          <!-- LKTI.jpg -->
+          <div
+            class="certificate-card"
+            data-aos="fade-up"
+            data-aos-duration="1500"
+            data-aos-delay="2100"
+            onclick="openModal('img/Sertifikat AWO.png', 'AWO Certificate')"
+          >
+            <div class="certificate-image">
+              <img src="img/Sertifikat AWO.png" alt="AWO Certificate" />
+            </div>
+            <h3 class="certificate-title">AWO Certificate</h3>
+          </div>
+
+          <!-- LKTI.jpg -->
+          <div
+            class="certificate-card"
+            data-aos="fade-up"
+            data-aos-duration="1500"
+            data-aos-delay="2300"
+            onclick="openModal('img/Juara 1 MHQ 20 Juz QOI 22_Moch Zaidan Athallah_page-0001.jpg', 'MHQ 20 Juz UNESA Certificate')"
+          >
+            <div class="certificate-image">
+              <img
+                src="img/Juara 1 MHQ 20 Juz QOI 22_Moch Zaidan Athallah_page-0001.jpg"
+                alt="MHQ 20 Juz UNESA Certificate"
+              />
+            </div>
+            <h3 class="certificate-title">MHQ 20 Juz UNESA Certificate</h3>
+          </div>
+
+          <!-- LKTI.jpg -->
+          <div
+            class="certificate-card"
+            data-aos="fade-up"
+            data-aos-duration="1500"
+            data-aos-delay="2500"
+            onclick="openModal('img/BNSP HALAL SLAUGHTER.jpg', 'BNSP HALAL SLAUGHTER Certificate')"
+          >
+            <div class="certificate-image">
+              <img
+                src="img/BNSP HALAL SLAUGHTER.jpg"
+                alt="BNSP HALAL SLAUGHTER Certificate"
+              />
+            </div>
+            <h3 class="certificate-title">BNSP HALAL SLAUGHTER Certificate</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for enlarged image -->
+    <div class="modal" id="imageModal">
+      <div class="modal-content">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <img id="modalImage" src="" alt="" />
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({ offset: 0 });
+
+      function hamburg() {
+        const navbar = document.querySelector(".dropdown");
+        navbar.style.transform = "translateY(0px)";
+      }
+
+      function cancel() {
+        const navbar = document.querySelector(".dropdown");
+        navbar.style.transform = "translateY(-500px)";
+      }
+
+      // Modal functions
+      function openModal(imageSrc, altText) {
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+
+        modalImg.src = imageSrc;
+        modalImg.alt = altText;
+        modal.classList.add("active");
+
+        // Close modal when clicking outside the image
+        modal.addEventListener("click", function (e) {
+          if (e.target === modal) {
+            closeModal();
+          }
+        });
+
+        // Add keyboard support for closing modal
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") {
+            closeModal();
+          }
+        });
+      }
+
+      function closeModal() {
+        const modal = document.getElementById("imageModal");
+        modal.classList.remove("active");
+      }
+    </script>
+  </body>
+</html>
+
+<!-- Subscribe Tamzidan Madiyin di YouTube -->
